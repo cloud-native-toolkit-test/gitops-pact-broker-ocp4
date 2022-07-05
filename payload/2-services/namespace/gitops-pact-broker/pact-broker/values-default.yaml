@@ -1,0 +1,16 @@
+"global":
+  "clusterType": "ocp4"
+  "ingressSubdomain": ""
+  "tlsSecretName": ""
+"pact-broker":
+  "ingress":
+    "enabled": false
+    "hosts":
+    - "host": "pact-broker-gitops-pact-broker."
+    "tls":
+    - "hosts":
+      - "pact-broker-gitops-pact-broker."
+      "secretName": ""
+  "route":
+    "enabled": false
+
