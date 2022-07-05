@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gitops-pact-broker-pact-broker
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: gitops-pact-broker
+    server: https://kubernetes.default.svc
+  project: 2-services
+  source:
+    path: payload/2-services/namespace/gitops-pact-broker/pact-broker
+    repoURL: https://github.com/cloud-native-toolkit-test/gitops-pact-broker-ocp4.git
+    targetRevision: main
+    helm:
+      releaseName: pact-broker
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+  ignoreDifferences: []
